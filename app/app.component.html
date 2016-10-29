@@ -1,30 +1,53 @@
 <div>
-    <p-dataTable [value]="cars" selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [responsive]="true">
-        <header>CRUD for Cars</header>
-        <p-column field="vin" header="Vin" [sortable]="true"></p-column>
-        <p-column field="year" header="Year" [sortable]="true"></p-column>
-        <p-column field="brand" header="Brand" [sortable]="true"></p-column>
-        <p-column field="color" header="Color" [sortable]="true"></p-column>
-        <footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></footer>
+    <p-dataTable [value]="users" selectionMode="single" [(selection)]="selectedUser" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [responsive]="true">
+        <header>CRUD for Users</header>
+        <p-column field="id" header="Id" [sortable]="true"></p-column>
+        <p-column field="name" header="Name" [sortable]="true"></p-column>
+        <p-column field="week1" header="week1" [sortable]="true"></p-column>
+        <p-column field="week2" header="week2" [sortable]="true">
+
+        </p-column>
+        <p-column field="week3" header="week3" [sortable]="true"></p-column>
+
+        <p-column field="color" header="Color" [sortable]="true">
+          <template let-col let-user="rowData" pTemplate type="body">
+                      <div [style.backgroundColor]="user[col.field]">{{user[col.field]}}</div>
+
+          </template>
+        </p-column>
+        <footer>
+          <div class="ui-helper-clearfix" style="width:100%">
+            <button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+          </div>
+        </footer>
     </p-dataTable>
 
-    <p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" *ngIf="car">
+    <p-dialog header="User Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" *ngIf="user">
             <div class="ui-grid-row">
-                <div class="ui-grid-col-4"><label for="vin">Vin</label></div>
-                <div class="ui-grid-col-8"><input pInputText id="vin" [(ngModel)]="car.vin" /></div>
+                <div class="ui-grid-col-4"><label for="id">Id</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="id" [(ngModel)]="user.id" /></div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-4"><label for="brand">Year</label></div>
-                <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.year" /></div>
+                <div class="ui-grid-col-4"><label for="name">Name</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="user.name" /></div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-4"><label for="brand">Brand</label></div>
-                <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.brand" /></div>
+                <div class="ui-grid-col-4"><label for="week1">Week1</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="week1" [(ngModel)]="user.week1" /></div>
             </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="week2">week 2</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="week2" [(ngModel)]="user.week2" /></div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="week2">week 3</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="week3" [(ngModel)]="user.week3" /></div>
+            </div>
+
             <div class="ui-grid-row">
                 <div class="ui-grid-col-4"><label for="color">Color</label></div>
-                <div class="ui-grid-col-8"><input pInputText id="color" [(ngModel)]="car.color" /></div>
+                <div class="ui-grid-col-8"><input pInputText id="color" [(ngModel)]="user.color" /></div>
             </div>
         </div>
         <footer>
@@ -34,4 +57,5 @@
             </div>
         </footer>
     </p-dialog>
+
 </div>

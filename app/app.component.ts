@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {Car} from './cars/car';
-import {CarService} from './cars/carservice';
+import {User} from './users/user';
+import {Message} from './users/message';
+import {UserService} from './users/userservice';
 
-class PrimeCar implements Car {
-    constructor(public vin?, public year?, public brand?, public color?) {}
+class PrimeUser implements User {
+    constructor(public id?, public name?, public week1?, public week2?, public color?) {}
 }
 
 @Component({
@@ -14,57 +15,58 @@ export class AppComponent {
 
 	displayDialog: boolean;
 
-    car: Car = new PrimeCar();
+    user: User = new PrimeUser();
 
-    selectedCar: Car;
+    selectedUser: User;
 
-    newCar: boolean;
+    newUser: boolean;
 
-    cars: Car[];
+    users: User[];
 
-    constructor(private carService: CarService) { }
+    constructor(private userService: UserService) { }
 
     ngOnInit() {
-        this.carService.getCarsMedium().then(cars => this.cars = cars);
+        this.userService.getUsersMedium().then(users => this.users = users);
+        console.log(this.users);
     }
 
     showDialogToAdd() {
-        this.newCar = true;
-        this.car = new PrimeCar();
+        this.newUser = true;
+        this.user = new PrimeUser();
         this.displayDialog = true;
     }
 
     save() {
-        if(this.newCar)
-            this.cars.push(this.car);
+        if(this.newUser)
+            this.users.push(this.user);
         else
-            this.cars[this.findSelectedCarIndex()] = this.car;
+            this.users[this.findSelectedUserIndex()] = this.user;
 
-        this.car = null;
+        this.user = null;
         this.displayDialog = false;
     }
 
     delete() {
-        this.cars.splice(this.findSelectedCarIndex(), 1);
-        this.car = null;
+        this.users.splice(this.findSelectedUserIndex(), 1);
+        this.user = null;
         this.displayDialog = false;
     }
 
     onRowSelect(event) {
-        this.newCar = false;
-        this.car = this.cloneCar(event.data);
+        this.newUser = false;
+        this.user = this.cloneUser(event.data);
         this.displayDialog = true;
     }
 
-    cloneCar(c: Car): Car {
-        let car = new PrimeCar();
+    cloneUser(c: User): User {
+        let user = new PrimeUser();
         for(let prop in c) {
-            car[prop] = c[prop];
+            user[prop] = c[prop];
         }
-        return car;
+        return user;
     }
 
-    findSelectedCarIndex(): number {
-        return this.cars.indexOf(this.selectedCar);
+    findSelectedUserIndex(): number {
+        return this.users.indexOf(this.selectedUser);
     }
 }

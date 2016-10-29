@@ -15,16 +15,17 @@ var platform_browser_1 = require('@angular/platform-browser');
 require('rxjs/add/operator/toPromise');
 var app_component_1 = require('./app.component');
 var carservice_1 = require('./cars/carservice');
+var userservice_1 = require('./users/userservice');
 var primeng_1 = require('primeng/primeng');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, primeng_1.InputTextModule, primeng_1.DataTableModule, primeng_1.ButtonModule, primeng_1.DialogModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, primeng_1.InputTextModule, primeng_1.DataTableModule, primeng_1.ButtonModule, primeng_1.DialogModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent],
-            providers: [carservice_1.CarService]
+            providers: [carservice_1.CarService, userservice_1.UserService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

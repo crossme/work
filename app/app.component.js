@@ -9,64 +9,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var carservice_1 = require('./cars/carservice');
-var PrimeCar = (function () {
-    function PrimeCar(vin, year, brand, color) {
-        this.vin = vin;
-        this.year = year;
-        this.brand = brand;
+var userservice_1 = require('./users/userservice');
+var PrimeUser = (function () {
+    function PrimeUser(id, name, week1, week2, color) {
+        this.id = id;
+        this.name = name;
+        this.week1 = week1;
+        this.week2 = week2;
         this.color = color;
     }
-    return PrimeCar;
+    return PrimeUser;
 }());
 var AppComponent = (function () {
-    function AppComponent(carService) {
-        this.carService = carService;
-        this.car = new PrimeCar();
+    function AppComponent(userService) {
+        this.userService = userService;
+        this.user = new PrimeUser();
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.carService.getCarsMedium().then(function (cars) { return _this.cars = cars; });
+        this.userService.getUsersMedium().then(function (users) { return _this.users = users; });
+        console.log(this.users);
     };
     AppComponent.prototype.showDialogToAdd = function () {
-        this.newCar = true;
-        this.car = new PrimeCar();
+        this.newUser = true;
+        this.user = new PrimeUser();
         this.displayDialog = true;
     };
     AppComponent.prototype.save = function () {
-        if (this.newCar)
-            this.cars.push(this.car);
+        if (this.newUser)
+            this.users.push(this.user);
         else
-            this.cars[this.findSelectedCarIndex()] = this.car;
-        this.car = null;
+            this.users[this.findSelectedUserIndex()] = this.user;
+        this.user = null;
         this.displayDialog = false;
     };
     AppComponent.prototype.delete = function () {
-        this.cars.splice(this.findSelectedCarIndex(), 1);
-        this.car = null;
+        this.users.splice(this.findSelectedUserIndex(), 1);
+        this.user = null;
         this.displayDialog = false;
     };
     AppComponent.prototype.onRowSelect = function (event) {
-        this.newCar = false;
-        this.car = this.cloneCar(event.data);
+        this.newUser = false;
+        this.user = this.cloneUser(event.data);
         this.displayDialog = true;
     };
-    AppComponent.prototype.cloneCar = function (c) {
-        var car = new PrimeCar();
+    AppComponent.prototype.cloneUser = function (c) {
+        var user = new PrimeUser();
         for (var prop in c) {
-            car[prop] = c[prop];
+            user[prop] = c[prop];
         }
-        return car;
+        return user;
     };
-    AppComponent.prototype.findSelectedCarIndex = function () {
-        return this.cars.indexOf(this.selectedCar);
+    AppComponent.prototype.findSelectedUserIndex = function () {
+        return this.users.indexOf(this.selectedUser);
     };
     AppComponent = __decorate([
         core_1.Component({
             templateUrl: 'app/app.component.html',
             selector: 'my-app'
         }), 
-        __metadata('design:paramtypes', [carservice_1.CarService])
+        __metadata('design:paramtypes', [userservice_1.UserService])
     ], AppComponent);
     return AppComponent;
 }());
