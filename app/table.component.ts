@@ -25,6 +25,9 @@ export class TableComponent {
     cols : {field : string, header : string, content : string, color : string,}[];
     selectedUser : User;
     isRowEditable : boolean = false;
+    progressBarvalue : number = 0;
+    interval : number;
+
 
     constructor(private userService: UserService, private location :Location) { }
 
@@ -100,11 +103,26 @@ export class TableComponent {
     }
 
     onRowSelect(event) {
-
+        console.log("Row selected!", this.progressBarvalue);
+        this.progressBarvalue = 0;
+        this.interval = setInterval(()=>{
+          if(this.progressBarvalue < 90){
+            this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+          } else {
+            this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+          }
+          if(this.progressBarvalue >=100){
+            this.progressBarvalue = 100;
+            clearInterval(this.interval);
+          }
+        },500);
     }
 
     onRowUnselect(event) {
+        console.log("unsel", event);
+        this.progressBarvalue = 0;
 
+        clearInterval(this.interval);
     }
 
     findSelectedUserIndex(): number {

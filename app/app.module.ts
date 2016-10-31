@@ -6,18 +6,17 @@ import 'rxjs/add/operator/toPromise';
 import {AppComponent}  from './app.component';
 import {DashboardComponent}  from './dashboard.component';
 import {UserDetailComponent}  from './user-detail.component';
-
 import {TableComponent}  from './table.component';
-import {CarService} from './cars/carservice';
+
 import {UserService} from './users/userservice';
 import { RouterModule } from '@angular/router';
 import {InputTextModule,DataTableModule,ButtonModule,DialogModule} from 'primeng/primeng';
 import {TabMenuModule,MenuModule} from 'primeng/primeng';
-import {InputSwitchModule,TooltipModule} from 'primeng/primeng';
+import {InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule} from 'primeng/primeng';
 
 @NgModule({
   imports:      [BrowserModule,FormsModule,HttpModule,InputTextModule,DataTableModule,ButtonModule,DialogModule,HttpModule,
-                TabMenuModule,MenuModule,InputSwitchModule,TooltipModule,
+                TabMenuModule,MenuModule,InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,
                 RouterModule.forRoot([
                   {
                     path: '',
@@ -35,8 +34,8 @@ import {InputSwitchModule,TooltipModule} from 'primeng/primeng';
 
                 ])
                 ],
-  declarations: [AppComponent, DashboardComponent, TableComponent, UserDetailComponent],
+  declarations: [AppComponent, DashboardComponent, TableComponent, UserDetailComponent  ],
   bootstrap:    [AppComponent],
-  providers:    [CarService, UserService]
+  providers:    [ UserService]
 })
 export class AppModule { }

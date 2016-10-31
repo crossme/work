@@ -28,6 +28,7 @@ var TableComponent = (function () {
         this.location = location;
         this.user = new PrimeUser();
         this.isRowEditable = false;
+        this.progressBarvalue = 0;
     }
     TableComponent.prototype.ngOnInit = function () {
         //this.userService.getUsersMedium().then(users => this.users = users);
@@ -89,8 +90,26 @@ var TableComponent = (function () {
         return user;
     };
     TableComponent.prototype.onRowSelect = function (event) {
+        var _this = this;
+        console.log("Row selected!", this.progressBarvalue);
+        this.progressBarvalue = 0;
+        this.interval = setInterval(function () {
+            if (_this.progressBarvalue < 90) {
+                _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+            }
+            else {
+                _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+            }
+            if (_this.progressBarvalue >= 100) {
+                _this.progressBarvalue = 100;
+                clearInterval(_this.interval);
+            }
+        }, 500);
     };
     TableComponent.prototype.onRowUnselect = function (event) {
+        console.log("unsel", event);
+        this.progressBarvalue = 0;
+        clearInterval(this.interval);
     };
     TableComponent.prototype.findSelectedUserIndex = function () {
         return this.users.indexOf(this.selectedUser);

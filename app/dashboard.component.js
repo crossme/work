@@ -26,12 +26,17 @@ var DashboardComponent = (function () {
         }, 4000);
     }
     DashboardComponent.prototype.ngOnInit = function () {
-        //console.log("location dash ", location.path;
+        this.images = [];
+        // this.images.push({source:'Ericsson-Entrance__DSC5589-2.jpg_3.jpg', alt:'ERICSSON NETWORKS', title:'WELCOME'});
+        // this.images.push({source:'ericsson-office.jpg'});
+        // this.images.push({source:'Ericsson-logo-blue-compressed.jpg'});
+        // this.images.push({source:'Wordcloud-MOM-Workbench.png'});
+        this.images.push({ source: 'Wordcloud-MOM-Workbench.png' });
     };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'dashboard',
-            template: "\n    <br />\n    <h1>DASHBOARD Comp</h1>\n    <div class=\"ticker\">\n    <h3>Latest News</h3>\n    <ul id=\"ticker\">\n        <li>11Dummy data is benign information that does not contain any useful data, but serves to reserve spac...</li>\n        <li>22For testing, dummy data can also be used as stubs or pad to avoid software testing iss...</li>\n        <li>33In operational use, dummy data may be transmitted for OPSEC purposes.</li>\n        <li>44Dummy data must be rigorously evaluated and documented to ensure that it does no...</li>\n        <li>555The topic of this article may not meet Wikipedia's general notability guideline.</li>\n    </ul>\n</div>\n\n    ",
+            templateUrl: 'app/dashboard.component.html',
             styleUrls: ['app/resources/css/site.css']
         }), 
         __metadata('design:paramtypes', [router_1.Router, common_1.Location])
