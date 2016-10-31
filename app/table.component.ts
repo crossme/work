@@ -34,7 +34,7 @@ export class TableComponent {
     ngOnInit() {
         //this.userService.getUsersMedium().then(users => this.users = users);
         //console.log("users", this.users);
-        console.log("location table", location;
+        console.log("location table", location);
         console.log("users", this.users);
         this.users =
             [
@@ -104,17 +104,19 @@ export class TableComponent {
 
     onRowSelect(event) {
         console.log("Row selected!", this.progressBarvalue);
-        this.progressBarvalue = 0;
+        this.progressBarvalue = 1;
         this.interval = setInterval(()=>{
-          if(this.progressBarvalue < 90){
-            this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
-          } else {
-            this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
-          }
-          if(this.progressBarvalue >=100){
-            this.progressBarvalue = 100;
-            clearInterval(this.interval);
-          }
+          if(this.progressBarvalue !== 0){
+              if(this.progressBarvalue < 90){
+                this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+              } else {
+                this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+              }
+              if(this.progressBarvalue >=100){
+                this.progressBarvalue = 100;
+                clearInterval(this.interval);
+              }
+        }
         },500);
     }
 
