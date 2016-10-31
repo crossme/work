@@ -599,3 +599,64 @@ pre {
 .ui-tabview-left > .ui-tabview-nav {
     height: 150px;
 }
+
+.colorcell-red {
+  background-color: #f00;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.colorcell-blue {
+  background-color: #0000FF;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.colorcell-yellow {
+  background-color: #FFFF00;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.colorcell-green {
+  background-color: #32CD32;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/*
+Ticker styles starts here*/
+.ticker {
+    width: 400px;
+	height: 200px;
+	overflow: hidden;
+	border: 1px solid #DDD;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #DDD;
+	background-color:  #F5F3E5;
+	text-align: left;
+}
+
+.ticker h3 {
+	padding: 0 0 10px 10px;
+	border-bottom: 1px solid #A7A7A7;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-style: italic;
+}
+
+ul li {
+    list-style: none;
+    height:50px;
+    padding:7px;
+    border-bottom: 1px solid #D6CFB8;
+}
+/*
+
+ Ticker style ends here*/

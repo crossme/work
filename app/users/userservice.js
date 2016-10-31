@@ -22,7 +22,10 @@ var UserService = (function () {
         return this.http.get('http://127.0.0.1\:8080/test')
             .toPromise()
             .then(function (res) { return res.json().data; })
-            .then(function (data) { return data; });
+            .then(function (data) {
+            console.log(data);
+            return data;
+        });
     };
     UserService = __decorate([
         core_1.Injectable(), 

@@ -20,7 +20,8 @@ export class UserService {
         return this.http.get('http://127.0.0.1\:8080/test')
                            .toPromise()
                            .then(res => <User[]> res.json().data)
-                           .then(data => { return data; });
+                           .then(data => { console.log(data);
+                             return data; });
 
 
     }

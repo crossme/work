@@ -9,66 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var userservice_1 = require('./users/userservice');
-var PrimeUser = (function () {
-    function PrimeUser(id, name, week1, week2, color) {
-        this.id = id;
-        this.name = name;
-        this.week1 = week1;
-        this.week2 = week2;
-        this.color = color;
-    }
-    return PrimeUser;
-}());
+var common_1 = require('@angular/common');
 var AppComponent = (function () {
-    function AppComponent(userService) {
-        this.userService = userService;
-        this.user = new PrimeUser();
+    function AppComponent(location) {
+        this.location = location;
     }
     AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.userService.getUsersMedium().then(function (users) { return _this.users = users; });
-        console.log(this.users);
-    };
-    AppComponent.prototype.showDialogToAdd = function () {
-        this.newUser = true;
-        this.user = new PrimeUser();
-        this.displayDialog = true;
-    };
-    AppComponent.prototype.save = function () {
-        if (this.newUser)
-            this.users.push(this.user);
-        else
-            this.users[this.findSelectedUserIndex()] = this.user;
-        this.user = null;
-        this.displayDialog = false;
-    };
-    AppComponent.prototype.delete = function () {
-        this.users.splice(this.findSelectedUserIndex(), 1);
-        this.user = null;
-        this.displayDialog = false;
-    };
-    AppComponent.prototype.onRowSelect = function (event) {
-        this.newUser = false;
-        this.user = this.cloneUser(event.data);
-        this.displayDialog = true;
-    };
-    AppComponent.prototype.cloneUser = function (c) {
-        var user = new PrimeUser();
-        for (var prop in c) {
-            user[prop] = c[prop];
+        this.items = [
+            { label: 'Dashboard', icon: 'fa-book', routerLink: ['/dashboard'] },
+            { label: 'Table', icon: 'fa-bar-chart', routerLink: ['/table'] },
+        ];
+        if (location.pathname == "/table") {
+            this.activeItem = this.items[1];
         }
-        return user;
-    };
-    AppComponent.prototype.findSelectedUserIndex = function () {
-        return this.users.indexOf(this.selectedUser);
+        else if (location.pathname == "/dashboard") {
+            this.activeItem = this.items[0];
+        }
+        else {
+            this.activeItem = this.items[0];
+        }
     };
     AppComponent = __decorate([
         core_1.Component({
-            templateUrl: 'app/app.component.html',
-            selector: 'my-app'
+            selector: 'my-app',
+            template: "\n  <p-tabMenu [model]=\"items\" [activeItem]=\"activeItem\"></p-tabMenu>\n  <router-outlet></router-outlet>\n  ",
         }), 
-        __metadata('design:paramtypes', [userservice_1.UserService])
+        __metadata('design:paramtypes', [common_1.Location])
     ], AppComponent);
     return AppComponent;
 }());

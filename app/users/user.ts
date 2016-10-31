@@ -1,7 +1,6 @@
 export interface User {
-  id;
-  name;
-  week1;
-  week2;
-  color;
+  id : string;
+  name: string;
+
+  week: {field: string, header: string,}[];
 }

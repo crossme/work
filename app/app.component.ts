@@ -1,72 +1,33 @@
-import {Component} from '@angular/core';
-import {User} from './users/user';
-import {Message} from './users/message';
-import {UserService} from './users/userservice';
-
-class PrimeUser implements User {
-    constructor(public id?, public name?, public week1?, public week2?, public color?) {}
-}
+import {Component, OnInit} from '@angular/core';
+import { RouterModule } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
-	templateUrl: 'app/app.component.html',
-	selector: 'my-app'
+	selector: 'my-app',
+  template: `
+  <p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+  <router-outlet></router-outlet>
+  `,
 })
-export class AppComponent {
 
-	displayDialog: boolean;
+export class AppComponent implements OnInit{
 
-    user: User = new PrimeUser();
+  constructor(private location :Location) { }
 
-    selectedUser: User;
+  ngOnInit() {
 
-    newUser: boolean;
+        this.items = [
+             {label: 'Dashboard', icon: 'fa-book', routerLink: ['/dashboard']},
+             {label: 'Table', icon: 'fa-bar-chart', routerLink: ['/table']},
+        ];
+         if(location.pathname=="/table"){
+            this.activeItem = this.items[1];
+         } else if(location.pathname=="/dashboard"){
+            this.activeItem = this.items[0];
+         } else {
+             this.activeItem = this.items[0];
+         }
+        
 
-    users: User[];
-
-    constructor(private userService: UserService) { }
-
-    ngOnInit() {
-        this.userService.getUsersMedium().then(users => this.users = users);
-        console.log(this.users);
-    }
-
-    showDialogToAdd() {
-        this.newUser = true;
-        this.user = new PrimeUser();
-        this.displayDialog = true;
-    }
-
-    save() {
-        if(this.newUser)
-            this.users.push(this.user);
-        else
-            this.users[this.findSelectedUserIndex()] = this.user;
-
-        this.user = null;
-        this.displayDialog = false;
-    }
-
-    delete() {
-        this.users.splice(this.findSelectedUserIndex(), 1);
-        this.user = null;
-        this.displayDialog = false;
-    }
-
-    onRowSelect(event) {
-        this.newUser = false;
-        this.user = this.cloneUser(event.data);
-        this.displayDialog = true;
-    }
-
-    cloneUser(c: User): User {
-        let user = new PrimeUser();
-        for(let prop in c) {
-            user[prop] = c[prop];
-        }
-        return user;
-    }
-
-    findSelectedUserIndex(): number {
-        return this.users.indexOf(this.selectedUser);
-    }
+ }
 }
