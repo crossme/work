@@ -17,6 +17,7 @@ var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard.component');
 var user_detail_component_1 = require('./user-detail.component');
 var table_component_1 = require('./table.component');
+var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var userservice_1 = require('./users/userservice');
 var router_1 = require('@angular/router');
 var primeng_1 = require('primeng/primeng');
@@ -28,7 +29,8 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, primeng_1.InputTextModule, primeng_1.DataTableModule, primeng_1.ButtonModule, primeng_1.DialogModule, http_1.HttpModule,
-                primeng_2.TabMenuModule, primeng_2.MenuModule, primeng_3.InputSwitchModule, primeng_3.TooltipModule, primeng_3.ProgressBarModule, primeng_3.GalleriaModule,
+                primeng_2.TabMenuModule, primeng_2.MenuModule, primeng_3.InputSwitchModule, primeng_3.TooltipModule, primeng_3.ProgressBarModule, primeng_3.GalleriaModule, ng2_bootstrap_1.Ng2BootstrapModule,
+                ng2_bootstrap_1.AlertModule,
                 router_1.RouterModule.forRoot([
                     {
                         path: '',

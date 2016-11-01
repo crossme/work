@@ -7,7 +7,7 @@ import {AppComponent}  from './app.component';
 import {DashboardComponent}  from './dashboard.component';
 import {UserDetailComponent}  from './user-detail.component';
 import {TableComponent}  from './table.component';
-
+import { Ng2BootstrapModule,AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import {UserService} from './users/userservice';
 import { RouterModule } from '@angular/router';
 import {InputTextModule,DataTableModule,ButtonModule,DialogModule} from 'primeng/primeng';
@@ -16,7 +16,8 @@ import {InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule} from '
 
 @NgModule({
   imports:      [BrowserModule,FormsModule,HttpModule,InputTextModule,DataTableModule,ButtonModule,DialogModule,HttpModule,
-                TabMenuModule,MenuModule,InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,
+                TabMenuModule,MenuModule,InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,Ng2BootstrapModule,
+                AlertModule,
                 RouterModule.forRoot([
                   {
                     path: '',

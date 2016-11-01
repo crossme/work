@@ -92,17 +92,19 @@ var TableComponent = (function () {
     TableComponent.prototype.onRowSelect = function (event) {
         var _this = this;
         console.log("Row selected!", this.progressBarvalue);
-        this.progressBarvalue = 0;
+        this.progressBarvalue = 1;
         this.interval = setInterval(function () {
-            if (_this.progressBarvalue < 90) {
-                _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
-            }
-            else {
-                _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
-            }
-            if (_this.progressBarvalue >= 100) {
-                _this.progressBarvalue = 100;
-                clearInterval(_this.interval);
+            if (_this.progressBarvalue !== 0) {
+                if (_this.progressBarvalue < 90) {
+                    _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+                }
+                else {
+                    _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+                }
+                if (_this.progressBarvalue >= 100) {
+                    _this.progressBarvalue = 100;
+                    clearInterval(_this.interval);
+                }
             }
         }, 500);
     };
