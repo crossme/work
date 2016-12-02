@@ -77,11 +77,12 @@ var TableComponent = (function () {
         this.user = null;
         this.displayDialog = false;
     };
-    TableComponent.prototype.onRowSelect = function (event) {
-        this.newUser = false;
-        this.user = this.cloneUser(event.data);
-        this.displayDialog = true;
-    };
+    /*    onRowSelect(event) {
+            this.newUser = false;
+            this.user = this.cloneUser(event.data);
+            this.displayDialog = true;
+        }
+    */
     TableComponent.prototype.cloneUser = function (c) {
         var user = new PrimeUser();
         for (var prop in c) {
@@ -96,10 +97,14 @@ var TableComponent = (function () {
         this.interval = setInterval(function () {
             if (_this.progressBarvalue !== 0) {
                 if (_this.progressBarvalue < 90) {
-                    _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+                    //this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+                    //Uncomment for progress bar fill time.
+                    _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 80) + 1;
                 }
                 else {
-                    _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+                    //Uncomment for progress bar fill time.
+                    //this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+                    _this.progressBarvalue = _this.progressBarvalue + Math.floor(Math.random() * 60) + 1;
                 }
                 if (_this.progressBarvalue >= 100) {
                     _this.progressBarvalue = 100;

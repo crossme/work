@@ -1,6 +1,6 @@
 export interface User {
-  id : string;
-  name: string;
+  id? : string;
+  name?: string;
 
-  week: {field: string, header: string,}[];
+  week?: {field: string, header: string,}[];
 }

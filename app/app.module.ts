@@ -7,17 +7,28 @@ import {AppComponent}  from './app.component';
 import {DashboardComponent}  from './dashboard.component';
 import {UserDetailComponent}  from './user-detail.component';
 import {TableComponent}  from './table.component';
-import { Ng2BootstrapModule,AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import {Ng2BootstrapModule,AlertModule, CarouselModule } from 'ng2-bootstrap/ng2-bootstrap';
 import {UserService} from './users/userservice';
 import { RouterModule } from '@angular/router';
-import {InputTextModule,DataTableModule,ButtonModule,DialogModule} from 'primeng/primeng';
-import {TabMenuModule,MenuModule} from 'primeng/primeng';
-import {InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule} from 'primeng/primeng';
+import { DoughnutComponent } from '../app/EnhancedView/doughnut.component';
+import { BarChartComponent } from '../app/EnhancedView/barchart.component';
+import { LineChartComponent } from '../app/EnhancedView/linechart.component';
+import { PolarAreaChartComponent } from '../app/EnhancedView/polarareachart.component';
+import { PieChartComponent } from '../app/EnhancedView/piechart.component';
+import { RadarChartComponent } from '../app/EnhancedView/radarchart.component';
+
+
+
+import {InputTextModule,DataTableModule,ButtonModule,DialogModule,
+  SplitButtonModule,TabMenuModule,MenuModule,MessagesModule,
+  InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,SlideMenuModule,MenuItem,ChartModule} from 'primeng/primeng';
+  
+
 
 @NgModule({
   imports:      [BrowserModule,FormsModule,HttpModule,InputTextModule,DataTableModule,ButtonModule,DialogModule,HttpModule,
                 TabMenuModule,MenuModule,InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,Ng2BootstrapModule,
-                AlertModule,
+                AlertModule,CarouselModule,SplitButtonModule,ChartModule,MessagesModule,SlideMenuModule,
                 RouterModule.forRoot([
                   {
                     path: '',
@@ -32,10 +43,35 @@ import {InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule} from '
                     path : 'table',
                     component: TableComponent
                   },
-
+                  {
+                    path : 'doughnut',
+                    component: DoughnutComponent
+                  },
+                  {
+                    path : 'barchart',
+                    component: BarChartComponent
+                  },
+                  {
+                    path : 'linechart',
+                    component: LineChartComponent
+                  },
+                  {
+                    path : 'polarareachart',
+                    component: PolarAreaChartComponent
+                  },
+                  {
+                    path : 'piechart',
+                    component: PieChartComponent
+                  },
+                  {
+                    path : 'radarchart',
+                    component: RadarChartComponent
+                  },
                 ])
                 ],
-  declarations: [AppComponent, DashboardComponent, TableComponent, UserDetailComponent  ],
+  declarations: [AppComponent, DashboardComponent, TableComponent, UserDetailComponent, DoughnutComponent, BarChartComponent,
+                LineChartComponent,PolarAreaChartComponent,PieChartComponent,RadarChartComponent,
+                 ],
   bootstrap:    [AppComponent],
   providers:    [ UserService]
 })

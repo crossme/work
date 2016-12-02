@@ -22,8 +22,7 @@ export class TableComponent {
     newUser: boolean;
     users: User[];
     weeks : {id: number, content: string}[];
-    cols : {field : string, header : string, content : string, color : string,}[];
-    selectedUser : User;
+    cols : any;
     isRowEditable : boolean = false;
     progressBarvalue : number = 0;
     interval : number;
@@ -88,12 +87,12 @@ export class TableComponent {
         this.displayDialog = false;
     }
 
-    onRowSelect(event) {
+/*    onRowSelect(event) {
         this.newUser = false;
         this.user = this.cloneUser(event.data);
         this.displayDialog = true;
     }
-
+*/
     cloneUser(c: User): User {
         let user = new PrimeUser();
         for(let prop in c) {
@@ -108,9 +107,13 @@ export class TableComponent {
         this.interval = setInterval(()=>{
           if(this.progressBarvalue !== 0){
               if(this.progressBarvalue < 90){
-                this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+                //this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
+                //Uncomment for progress bar fill time.
+                this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 80) + 1;
               } else {
-                this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+                  //Uncomment for progress bar fill time.
+                //this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 5) + 1;
+                this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 60) + 1;
               }
               if(this.progressBarvalue >=100){
                 this.progressBarvalue = 100;

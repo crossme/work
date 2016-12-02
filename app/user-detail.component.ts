@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
+import {User} from '../app/users/user';
+
 
 @Component({
   selector: '<user-detail>',
@@ -11,7 +13,11 @@ import {Location} from '@angular/common';
 
 export class UserDetailComponent implements OnInit{
   @Input()
-  user : USER;
+  user : User;
+  cols : any;
+  splitButtonitems : any;
+  slideMenuitems: any;
+  isdisplay: Boolean;
 
   weeks : {id: number, content: string, color: string}[]
   isRowEditable : boolean = true;
@@ -29,7 +35,50 @@ export class UserDetailComponent implements OnInit{
 
     ];
 
+     this.slideMenuitems = [
+            {label: 'Update', icon: 'fa-refresh', command: () => {
+                //this.update();
+            }},
+            {label: 'Barchart', icon: 'fa-close',routerLink: ['/barchart'], command: () => {
 
-    });
-  }
+                //this.delete();
+            }},
+            //{label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
+            {label: 'InnerMenu',
+              items: [
+              {label: 'DoughNut', icon: 'fa-paint-brush', routerLink: ['/doughnut']},
+              {label: 'LineChart', icon: 'fa-paint-brush', routerLink: ['/linechart']},
+              {label: 'PolarAreaChart', icon: 'fa-paint-brush', routerLink: ['/polarareachart']},
+              {label: 'PieChart', icon: 'fa-paint-brush', routerLink: ['/piechart']},
+              {label: 'RadarChart', icon: 'fa-paint-brush', routerLink: ['/radarchart']},
+              ]
+            }
+        ];
+
+    /*this.splitButtonitems = [
+            {label: 'Update', icon: 'fa-refresh', command: () => {
+                //this.update();
+            }},
+            {label: 'Barchart', icon: 'fa-close',routerLink: ['/barchart'], command: () => {
+                //this.delete();
+            }},
+            //{label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
+            {label: 'DoughNut', icon: 'fa-paint-brush', routerLink: ['/doughnut']},
+            {label: 'LineChart', icon: 'fa-paint-brush', routerLink: ['/linechart']},
+            {label: 'PolarAreaChart', icon: 'fa-paint-brush', routerLink: ['/polarareachart']},
+            {label: 'PieChart', icon: 'fa-paint-brush', routerLink: ['/piechart']},
+            {label: 'RadarChart', icon: 'fa-paint-brush', routerLink: ['/radarchart']},
+        ];*/
+
+
+    };
+    showDialog(){
+      this.isdisplay = true;
+    }
+
+    saveSplitButton(){
+      console.log("split button clicked!");
+
+    }
+
 }

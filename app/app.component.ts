@@ -12,6 +12,9 @@ import {Location} from '@angular/common';
 
 export class AppComponent implements OnInit{
 
+  items : any;
+  activeItem : any;
+
   constructor(private location :Location) { }
 
   ngOnInit() {

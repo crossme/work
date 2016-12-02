@@ -20,17 +20,21 @@ var table_component_1 = require('./table.component');
 var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var userservice_1 = require('./users/userservice');
 var router_1 = require('@angular/router');
+var doughnut_component_1 = require('../app/EnhancedView/doughnut.component');
+var barchart_component_1 = require('../app/EnhancedView/barchart.component');
+var linechart_component_1 = require('../app/EnhancedView/linechart.component');
+var polarareachart_component_1 = require('../app/EnhancedView/polarareachart.component');
+var piechart_component_1 = require('../app/EnhancedView/piechart.component');
+var radarchart_component_1 = require('../app/EnhancedView/radarchart.component');
 var primeng_1 = require('primeng/primeng');
-var primeng_2 = require('primeng/primeng');
-var primeng_3 = require('primeng/primeng');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, primeng_1.InputTextModule, primeng_1.DataTableModule, primeng_1.ButtonModule, primeng_1.DialogModule, http_1.HttpModule,
-                primeng_2.TabMenuModule, primeng_2.MenuModule, primeng_3.InputSwitchModule, primeng_3.TooltipModule, primeng_3.ProgressBarModule, primeng_3.GalleriaModule, ng2_bootstrap_1.Ng2BootstrapModule,
-                ng2_bootstrap_1.AlertModule,
+                primeng_1.TabMenuModule, primeng_1.MenuModule, primeng_1.InputSwitchModule, primeng_1.TooltipModule, primeng_1.ProgressBarModule, primeng_1.GalleriaModule, ng2_bootstrap_1.Ng2BootstrapModule,
+                ng2_bootstrap_1.AlertModule, ng2_bootstrap_1.CarouselModule, primeng_1.SplitButtonModule, primeng_1.ChartModule, primeng_1.MessagesModule, primeng_1.SlideMenuModule,
                 router_1.RouterModule.forRoot([
                     {
                         path: '',
@@ -45,9 +49,35 @@ var AppModule = (function () {
                         path: 'table',
                         component: table_component_1.TableComponent
                     },
+                    {
+                        path: 'doughnut',
+                        component: doughnut_component_1.DoughnutComponent
+                    },
+                    {
+                        path: 'barchart',
+                        component: barchart_component_1.BarChartComponent
+                    },
+                    {
+                        path: 'linechart',
+                        component: linechart_component_1.LineChartComponent
+                    },
+                    {
+                        path: 'polarareachart',
+                        component: polarareachart_component_1.PolarAreaChartComponent
+                    },
+                    {
+                        path: 'piechart',
+                        component: piechart_component_1.PieChartComponent
+                    },
+                    {
+                        path: 'radarchart',
+                        component: radarchart_component_1.RadarChartComponent
+                    },
                 ])
             ],
-            declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, table_component_1.TableComponent, user_detail_component_1.UserDetailComponent],
+            declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, table_component_1.TableComponent, user_detail_component_1.UserDetailComponent, doughnut_component_1.DoughnutComponent, barchart_component_1.BarChartComponent,
+                linechart_component_1.LineChartComponent, polarareachart_component_1.PolarAreaChartComponent, piechart_component_1.PieChartComponent, radarchart_component_1.RadarChartComponent,
+            ],
             bootstrap: [app_component_1.AppComponent],
             providers: [userservice_1.UserService]
         }), 

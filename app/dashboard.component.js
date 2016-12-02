@@ -15,6 +15,12 @@ var DashboardComponent = (function () {
     function DashboardComponent(router, location) {
         this.router = router;
         this.location = location;
+        this.myInterval = 5000;
+        this.noWrapSlides = false;
+        this.slides = [];
+        for (var i = 0; i < 4; i++) {
+            this.addSlide(i);
+        }
         setTimeout(function () {
             // run jQuery stuff here
             function ticker() {
@@ -25,13 +31,20 @@ var DashboardComponent = (function () {
             setInterval(function () { ticker(); }, 5000);
         }, 4000);
     }
+    DashboardComponent.prototype.addSlide = function (newWidth) {
+        //let newWidth = 600 + this.slides.length + 1;
+        this.slides.push({
+            image: newWidth + "-a.jpg",
+            text: ['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4] + "\n        " + ['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4]
+        });
+    };
     DashboardComponent.prototype.ngOnInit = function () {
-        this.images = [];
+        //this.images = [];
         // this.images.push({source:'Ericsson-Entrance__DSC5589-2.jpg_3.jpg', alt:'ERICSSON NETWORKS', title:'WELCOME'});
         // this.images.push({source:'ericsson-office.jpg'});
         // this.images.push({source:'Ericsson-logo-blue-compressed.jpg'});
         // this.images.push({source:'Wordcloud-MOM-Workbench.png'});
-        this.images.push({ source: 'Wordcloud-MOM-Workbench.png' });
+        //this.images.push({source:'Wordcloud-MOM-Workbench.png'});
     };
     DashboardComponent = __decorate([
         core_1.Component({

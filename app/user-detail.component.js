@@ -26,8 +26,46 @@ var UserDetailComponent = (function () {
             { field: 'id', header: 'ID' },
             { field: 'content', header: 'CONTENT' },
         ];
+        this.slideMenuitems = [
+            { label: 'Update', icon: 'fa-refresh', command: function () {
+                    //this.update();
+                } },
+            { label: 'Barchart', icon: 'fa-close', routerLink: ['/barchart'], command: function () {
+                    //this.delete();
+                } },
+            //{label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
+            { label: 'InnerMenu',
+                items: [
+                    { label: 'DoughNut', icon: 'fa-paint-brush', routerLink: ['/doughnut'] },
+                    { label: 'LineChart', icon: 'fa-paint-brush', routerLink: ['/linechart'] },
+                    { label: 'PolarAreaChart', icon: 'fa-paint-brush', routerLink: ['/polarareachart'] },
+                    { label: 'PieChart', icon: 'fa-paint-brush', routerLink: ['/piechart'] },
+                    { label: 'RadarChart', icon: 'fa-paint-brush', routerLink: ['/radarchart'] },
+                ]
+            }
+        ];
+        /*this.splitButtonitems = [
+                {label: 'Update', icon: 'fa-refresh', command: () => {
+                    //this.update();
+                }},
+                {label: 'Barchart', icon: 'fa-close',routerLink: ['/barchart'], command: () => {
+                    //this.delete();
+                }},
+                //{label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
+                {label: 'DoughNut', icon: 'fa-paint-brush', routerLink: ['/doughnut']},
+                {label: 'LineChart', icon: 'fa-paint-brush', routerLink: ['/linechart']},
+                {label: 'PolarAreaChart', icon: 'fa-paint-brush', routerLink: ['/polarareachart']},
+                {label: 'PieChart', icon: 'fa-paint-brush', routerLink: ['/piechart']},
+                {label: 'RadarChart', icon: 'fa-paint-brush', routerLink: ['/radarchart']},
+            ];*/
     };
     ;
+    UserDetailComponent.prototype.showDialog = function () {
+        this.isdisplay = true;
+    };
+    UserDetailComponent.prototype.saveSplitButton = function () {
+        console.log("split button clicked!");
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)

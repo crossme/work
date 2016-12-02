@@ -1,3 +1,4 @@
+===DETAILS COMPONENT===
 <div *ngIf='user'>
   <h4>Work-allocated to him.</h4>
   <div style="float: right;padding-top: 8px; margin-right: 10px;">
@@ -11,6 +12,7 @@
       <input #gb type="text" pInputText size="50" style="float:left" placeholder="Global Row Filter"
       pTooltip="Filter Rows" tooltipPosition="bottom" tooltipEvent="focus">
   </div>
+    
     <p-dataTable [value]="weeks" reorderableColumns="true" resizableColumns="true" [editable]="isRowEditable"
      [paginator]="true" [rows]="10" [responsive]="true" [globalFilter]="gb">
          <header>{{user.name}} details here!</header>
@@ -37,4 +39,24 @@
 
         </footer>
     </p-dataTable>
+    <!-- Button for Display overLay -->
+    <p-splitButton iconPos="right" label="Enhanced View" icon="fa-check" (onClick)="saveSplitButton()" [model]="splitButtonitems"></p-splitButton>
+
+
+    <p-slideMenu [model]="slideMenuitems"></p-slideMenu>
+
+
+    
+
+
+    <!-- dialog for Enhanced Views -->
+    <!-- <p-dialog header="Enhanced View" [(visible)]="isdisplay" modal="true" closeOnEscape="true" responsive="true" minHeight="600" minWidth="600">
+    
+       asdsadasd
+
+    </p-dialog>
+
+    <button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">BUTTTOOOn</button>
+ -->
+
 </div>
