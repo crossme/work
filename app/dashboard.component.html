@@ -7,30 +7,32 @@
  <br />
 <alert dismissOnTimeout="3000">This alert will dismiss in 3s</alert>
 
- <div class="ticker">
-<h3>Latest News</h3>
-<ul id="ticker">
-    <li>11Dummy data is benign information that does not contain any useful data, but serves to reserve spac...</li>
-    <li>22For testing, dummy data can also be used as stubs or pad to avoid software testing iss...</li>
-    <li>33In operational use, dummy data may be transmitted for OPSEC purposes.</li>
-    <li>44Dummy data must be rigorously evaluated and documented to ensure that it does no...</li>
-    <li>555The topic of this article may not meet Wikipedia's general notability guideline.</li>
-</ul>
+
+
+
+
+
+<div>
+  <span>
+    <p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true"
+      panelHeight="600" panelWidth="1400" frameWidth="140" frameHeight="60" showFilmstrip="true"></p-galleria>
+  <!-- </span>
+  <span> -->
+       <div class="ticker">
+      <h3>Latest News</h3>
+      <ul id="ticker">
+          <li>11Dummy data is benign information that does not contain any useful data, but serves to reserve spac...</li>
+          <li>22For testing, dummy data can also be used as stubs or pad to avoid software testing iss...</li>
+          <li>33In operational use, dummy data may be transmitted for OPSEC purposes.</li>
+          <li>44Dummy data must be rigorously evaluated and documented to ensure that it does no...</li>
+          <li>555The topic of this article may not meet Wikipedia's general notability guideline.</li>
+      </ul>
+      </div>
+  </span>
 </div>
-<br />
 
 
-<div style="max-width: 1000px; max-height: 500px; object-fit:contain; max-height=100%; max-width=100%">
-   <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
-     <slide *ngFor="let slidez of slides; let index=index"
-            [active]="slidez.active">
-       <img [src]="slidez.image" style="margin:auto;">
 
-       <div class="carousel-caption">
-         <h4>Slide {{index}}</h4>
 
-         <p>{{slidez.text}}</p>
-       </div>
-     </slide>
-   </carousel>
- </div>
+
+

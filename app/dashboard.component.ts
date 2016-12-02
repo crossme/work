@@ -45,14 +45,12 @@ export class DashboardComponent implements OnInit{
       });
     }
   ngOnInit():void{
-    //this.images = [];
-    // this.images.push({source:'Ericsson-Entrance__DSC5589-2.jpg_3.jpg', alt:'ERICSSON NETWORKS', title:'WELCOME'});
-    // this.images.push({source:'ericsson-office.jpg'});
-    // this.images.push({source:'Ericsson-logo-blue-compressed.jpg'});
-    // this.images.push({source:'Wordcloud-MOM-Workbench.png'});
-    //this.images.push({source:'Wordcloud-MOM-Workbench.png'});
-
-
+    
+     this.images = [];
+        this.images.push({source:'app/1.jpg', alt:'Description for Image 1', title:'Title 1'});
+        this.images.push({source:'/app/2.jpg', alt:'Description for Image 2', title:'Title 2'});
+        this.images.push({source:'/app/3.jpg', alt:'Description for Image 2', title:'Title 2'});
+    
   }
 
 }
