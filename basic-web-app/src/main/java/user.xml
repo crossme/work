@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="user"> 
+
+	<typeAlias alias="USER" type="tutorial.mvc.UserTEO" />
+
+	<resultMap id="userResultMap" class="USER">
+		<result property="id" column="ID" />
+  		<result property="name" column="NAME" />
+  		<result property="email" column="EMAIL" />
+  		<result property="domain" column="DOMAIN" />
+  		<result property="pool" column="POOL" />
+  		<result property="signum" column="SIGNUM" />
+  		<result property="lm" column="LM" />
+  		<result property="updatedlm" column="UPDATEDLM" />
+  		<result property="designation" column="DESIGNATION" />
+  		<result property="js" column="JS" />
+  		<result property="baselocation" column="BASELOCATION" />
+  		<result property="mobilenumber" column="MOBILENUMBER" />
+  		<result property="email" column="EMAIL" />
+	</resultMap>
+	
+	<select id="getUserById" parameterClass="java.lang.Integer" resultMap="userResultMap">
+		  SELECT * FROM USERINFO WHERE ID = #value#
+	</select>
+	
+	<select id="getMaxId" resultClass="java.lang.Integer">
+		  SELECT MAX(ID) FROM USERINFO
+	</select>
+	
+	<insert id="addUser" parameterClass="USER">
+		INSERT INTO USERINFO (ID,NAME,DOMAIN,POOL,PP,SIGNUM,LM,UPDATEDLM,DESIGNATION,JS,BASELOCATION,MOBILENUMBER,EMAIL)
+		 VALUES(#id#,#name#,#domain#,#pool#,#pp#,#signum#,#lm#,#updatedlm#,#designation#,#js#,#baselocation#,#mobilenumber#,#email#);
+	</insert>
+	
+	<delete id="deleteUserById" parameterClass="java.lang.Integer">
+		  DELETE FROM USERINFO WHERE ID = #value#
+	</delete>
+	
+</sqlMap>
