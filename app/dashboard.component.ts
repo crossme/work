@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
+import { UserService } from './users/userservice';
+
 declare var $:any;
 
 @Component({
@@ -17,8 +19,9 @@ export class DashboardComponent implements OnInit{
   public myInterval:number = 5000;
   public noWrapSlides:boolean = false;
   public slides:Array<any> = [];
+  myItems : any;
 
-  constructor(private router : Router, private location :Location){
+  constructor(private router : Router, private location :Location, private userService : UserService){
 
     for (let i = 0; i < 4; i++) {
           this.addSlide(i);
@@ -35,7 +38,17 @@ export class DashboardComponent implements OnInit{
         }, 4000);
   }
 
+GetUSERSSS(){
 
+  this.userService.getUsersMedium().subscribe(
+    data =>{ this.myItems = data;
+    console.log("kkkk");
+  },
+    err => console.error(err),
+    () => console.log('Random Quote Complete')
+    );;
+
+}
   public addSlide(newWidth: number):void {
       //let newWidth = 600 + this.slides.length + 1;
       this.slides.push({
@@ -45,12 +58,12 @@ export class DashboardComponent implements OnInit{
       });
     }
   ngOnInit():void{
-    
+
      this.images = [];
         this.images.push({source:'app/1.jpg', alt:'Description for Image 1', title:'Title 1'});
         this.images.push({source:'/app/2.jpg', alt:'Description for Image 2', title:'Title 2'});
         this.images.push({source:'/app/3.jpg', alt:'Description for Image 2', title:'Title 2'});
-    
+
   }
 
 }

@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
+var userservice_1 = require('./users/userservice');
 var DashboardComponent = (function () {
-    function DashboardComponent(router, location) {
+    function DashboardComponent(router, location, userService) {
         this.router = router;
         this.location = location;
+        this.userService = userService;
         this.myInterval = 5000;
         this.noWrapSlides = false;
         this.slides = [];
@@ -31,6 +33,14 @@ var DashboardComponent = (function () {
             setInterval(function () { ticker(); }, 5000);
         }, 4000);
     }
+    DashboardComponent.prototype.GetUSERSSS = function () {
+        var _this = this;
+        this.userService.getUsersMedium().subscribe(function (data) {
+            _this.myItems = data;
+            console.log("kkkk");
+        }, function (err) { return console.error(err); }, function () { return console.log('Random Quote Complete'); });
+        ;
+    };
     DashboardComponent.prototype.addSlide = function (newWidth) {
         //let newWidth = 600 + this.slides.length + 1;
         this.slides.push({
@@ -50,7 +60,7 @@ var DashboardComponent = (function () {
             templateUrl: 'app/dashboard.component.html',
             styleUrls: ['app/resources/css/site.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, common_1.Location])
+        __metadata('design:paramtypes', [router_1.Router, common_1.Location, userservice_1.UserService])
     ], DashboardComponent);
     return DashboardComponent;
 }());

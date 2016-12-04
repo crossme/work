@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
-
+  randomQuote:any;
     constructor(private http: Http) {}
 
     getUsersMedium() {
@@ -17,11 +17,8 @@ export class UserService {
         // console.log(response);
         // return response;
 
-        return this.http.get('http://127.0.0.1\:8080/test')
-                           .toPromise()
-                           .then(res => <User[]> res.json().data)
-                           .then(data => { console.log(data);
-                             return data; });
+        return this.http.get('http://backend.com\:8080/user/getall')
+          .map((res:Response) => res.json());
 
 
     }

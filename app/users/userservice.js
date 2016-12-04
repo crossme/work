@@ -19,13 +19,8 @@ var UserService = (function () {
         // var response =  this.http.get('http://127.0.0.1\:8080/test').map(data => data.json());
         // console.log(response);
         // return response;
-        return this.http.get('http://127.0.0.1\:8080/test')
-            .toPromise()
-            .then(function (res) { return res.json().data; })
-            .then(function (data) {
-            console.log(data);
-            return data;
-        });
+        return this.http.get('http://backend.com\:8080/user/getall')
+            .map(function (res) { return res.json(); });
     };
     UserService = __decorate([
         core_1.Injectable(), 
