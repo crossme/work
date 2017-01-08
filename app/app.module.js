@@ -26,6 +26,9 @@ var linechart_component_1 = require('../app/EnhancedView/linechart.component');
 var polarareachart_component_1 = require('../app/EnhancedView/polarareachart.component');
 var piechart_component_1 = require('../app/EnhancedView/piechart.component');
 var radarchart_component_1 = require('../app/EnhancedView/radarchart.component');
+var select_1 = require('../app/select');
+var off_click_1 = require('../app/off-click');
+var select_pipes_1 = require('../app/select-pipes');
 var primeng_1 = require('primeng/primeng');
 var AppModule = (function () {
     function AppModule() {
@@ -76,7 +79,7 @@ var AppModule = (function () {
                 ])
             ],
             declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, table_component_1.TableComponent, user_detail_component_1.UserDetailComponent, doughnut_component_1.DoughnutComponent, barchart_component_1.BarChartComponent,
-                linechart_component_1.LineChartComponent, polarareachart_component_1.PolarAreaChartComponent, piechart_component_1.PieChartComponent, radarchart_component_1.RadarChartComponent,
+                linechart_component_1.LineChartComponent, polarareachart_component_1.PolarAreaChartComponent, piechart_component_1.PieChartComponent, radarchart_component_1.RadarChartComponent, select_1.SelectComponent, off_click_1.OffClickDirective, select_pipes_1.HighlightPipe,
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [userservice_1.UserService]

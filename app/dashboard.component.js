@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
 var userservice_1 = require('./users/userservice');
+var Observable_1 = require('rxjs/Observable');
 var DashboardComponent = (function () {
     function DashboardComponent(router, location, userService) {
         this.router = router;
@@ -20,6 +21,18 @@ var DashboardComponent = (function () {
         this.myInterval = 5000;
         this.noWrapSlides = false;
         this.slides = [];
+        this.items = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
+            'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
+            'Budapest', 'Cologne', 'Copenhagen', 'Dortmund', 'Dresden', 'Dublin', 'Düsseldorf',
+            'Essen', 'Frankfurt', 'Genoa', 'Glasgow', 'Gothenburg', 'Hamburg', 'Hannover',
+            'Helsinki', 'Leeds', 'Leipzig', 'Lisbon', 'Łódź', 'London', 'Kraków', 'Madrid',
+            'Málaga', 'Manchester', 'Marseille', 'Milan', 'Munich', 'Naples', 'Palermo',
+            'Paris', 'Poznań', 'Prague', 'Riga', 'Rome', 'Rotterdam', 'Seville', 'Sheffield',
+            'Sofia', 'Stockholm', 'Stuttgart', 'The Hague', 'Turin', 'Valencia', 'Vienna',
+            'Vilnius', 'Warsaw', 'Wrocław', 'Zagreb', 'Zaragoza'];
+        this.value = ['Athens'];
+        this._disabledV = '0';
+        this.disabled = false;
         for (var i = 0; i < 4; i++) {
             this.addSlide(i);
         }
@@ -33,6 +46,46 @@ var DashboardComponent = (function () {
             setInterval(function () { ticker(); }, 5000);
         }, 4000);
     }
+    DashboardComponent.prototype.observableFun = function () {
+        var obs = Observable_1.Observable.from(['1', 2, '3']);
+        console.log('obsss', obs);
+        obs.subscribe(function (x) { return console.log(x); });
+        ;
+        /*
+            let observable$ = new Observable(observer =>{
+              console.log('observable created', observer);
+              //observer.error(new Error("FUCK"));
+              setTimeout(()=>{
+                observer.next(100);
+        
+              },1000);
+        
+            });
+        
+             observable$.subscribe(
+              val =>{
+                console.log(val);
+              },
+              err =>{
+                console.log(err);
+              } ,
+              complete =>{
+                console.log('COMPLETED');
+              }
+            );
+            let subscription2 = observable$.subscribe(
+              val1 =>{
+                console.log(val1);
+              },
+              err1 =>{
+                console.log(err1);
+              } ,
+              complete1 =>{
+                console.log('COMPLETED1');
+              }
+            );
+        */
+    };
     DashboardComponent.prototype.GetUSERSSS = function () {
         var _this = this;
         this.userService.getUsersMedium().subscribe(function (data) {
@@ -53,6 +106,33 @@ var DashboardComponent = (function () {
         this.images.push({ source: 'app/1.jpg', alt: 'Description for Image 1', title: 'Title 1' });
         this.images.push({ source: '/app/2.jpg', alt: 'Description for Image 2', title: 'Title 2' });
         this.images.push({ source: '/app/3.jpg', alt: 'Description for Image 2', title: 'Title 2' });
+    };
+    Object.defineProperty(DashboardComponent.prototype, "disabledV", {
+        get: function () {
+            return this._disabledV;
+        },
+        set: function (value) {
+            this._disabledV = value;
+            this.disabled = this._disabledV === '1';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    DashboardComponent.prototype.selected = function (value) {
+        console.log('Selected value is: ', value);
+    };
+    DashboardComponent.prototype.removed = function (value) {
+        console.log('Removed value is: ', value);
+    };
+    DashboardComponent.prototype.refreshValue = function (value) {
+        this.value = value;
+    };
+    DashboardComponent.prototype.itemsToString = function (value) {
+        if (value === void 0) { value = []; }
+        return value
+            .map(function (item) {
+            return item.text;
+        }).join(',');
     };
     DashboardComponent = __decorate([
         core_1.Component({

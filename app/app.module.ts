@@ -16,15 +16,16 @@ import { LineChartComponent } from '../app/EnhancedView/linechart.component';
 import { PolarAreaChartComponent } from '../app/EnhancedView/polarareachart.component';
 import { PieChartComponent } from '../app/EnhancedView/piechart.component';
 import { RadarChartComponent } from '../app/EnhancedView/radarchart.component';
+import {SelectComponent} from '../app/select';
 
+import {OffClickDirective} from '../app/off-click';
+
+import { HighlightPipe } from '../app/select-pipes';
 
 
 import {InputTextModule,DataTableModule,ButtonModule,DialogModule,
   SplitButtonModule,TabMenuModule,MenuModule,MessagesModule,
   InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,SlideMenuModule,MenuItem,ChartModule} from 'primeng/primeng';
-  
-
-
 @NgModule({
   imports:      [BrowserModule,FormsModule,HttpModule,InputTextModule,DataTableModule,ButtonModule,DialogModule,HttpModule,
                 TabMenuModule,MenuModule,InputSwitchModule,TooltipModule,ProgressBarModule,GalleriaModule,Ng2BootstrapModule,
@@ -70,7 +71,7 @@ import {InputTextModule,DataTableModule,ButtonModule,DialogModule,
                 ])
                 ],
   declarations: [AppComponent, DashboardComponent, TableComponent, UserDetailComponent, DoughnutComponent, BarChartComponent,
-                LineChartComponent,PolarAreaChartComponent,PieChartComponent,RadarChartComponent,
+                LineChartComponent,PolarAreaChartComponent,PieChartComponent,RadarChartComponent,SelectComponent,OffClickDirective,HighlightPipe,
                  ],
   bootstrap:    [AppComponent],
   providers:    [ UserService]

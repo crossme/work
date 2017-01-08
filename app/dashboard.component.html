@@ -1,26 +1,51 @@
 
-<!-- <p-galleria [images]="images" panelWidth="1415" panelHeight="690" showCaption="true"
-    frameHeight="100" frameWidth="100"
-  ></p-galleria>
- -->
-
- <br />
+<br />
 <alert dismissOnTimeout="3000">This alert will dismiss in 3s</alert>
 
-  <button type="button" pButton icon="fa-plus" style="float:left" (click)="GetUSERSSS()" label="GetUSERS"></button>
+<!-- <button type="button" pButton icon="fa-plus" style="float:left" (click)="GetUSERSSS()" label="GetUSERS"></button> -->
+
+
+<button type="button" pButton icon="fa-plus" style="float:left" (click)="observableFun()" label="GetUSERS"></button>
+
+
+
+<div style="width: 300px; margin-bottom: 20px;">
+  <h3>Select multiple cities</h3>
+  <ng-select (data)="value"
+              [multiple]="true"
+              [items]="items"
+              [disabled]="disabled"
+              (data)="refreshValue($event)"
+              (selected)="selected($event)"
+              (removed)="removed($event)"
+              placeholder="No city selected"></ng-select>
+  <pre>{{itemsToString(value)}}</pre>
+  <div>
+    <button type="button" class="btn btn-primary"
+            [(ngModel)]="disabledV" btnCheckbox
+            btnCheckboxTrue="1" btnCheckboxFalse="0">
+      {{disabled === '1' ? 'Enable' : 'Disable'}}
+    </button>
+  </div>
+</div>
 
 
 
 
 
 
+
+
+
+
+
+
+<!--
 
 <div>
   <span>
     <p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true"
       panelHeight="600" panelWidth="1400" frameWidth="140" frameHeight="60" showFilmstrip="true"></p-galleria>
-  <!-- </span>
-  <span> -->
        <div class="ticker">
       <h3>Latest News</h3>
       <ul id="ticker">
@@ -32,4 +57,4 @@
       </ul>
       </div>
   </span>
-</div>
+</div> -->
