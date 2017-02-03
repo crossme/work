@@ -19,6 +19,7 @@ var user_detail_component_1 = require('./user-detail.component');
 var table_component_1 = require('./table.component');
 var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var userservice_1 = require('./users/userservice');
+var storeservice_1 = require('./storeservice');
 var router_1 = require('@angular/router');
 var doughnut_component_1 = require('../app/EnhancedView/doughnut.component');
 var barchart_component_1 = require('../app/EnhancedView/barchart.component');
@@ -26,9 +27,6 @@ var linechart_component_1 = require('../app/EnhancedView/linechart.component');
 var polarareachart_component_1 = require('../app/EnhancedView/polarareachart.component');
 var piechart_component_1 = require('../app/EnhancedView/piechart.component');
 var radarchart_component_1 = require('../app/EnhancedView/radarchart.component');
-var select_1 = require('../app/select');
-var off_click_1 = require('../app/off-click');
-var select_pipes_1 = require('../app/select-pipes');
 var primeng_1 = require('primeng/primeng');
 var AppModule = (function () {
     function AppModule() {
@@ -79,10 +77,10 @@ var AppModule = (function () {
                 ])
             ],
             declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent, table_component_1.TableComponent, user_detail_component_1.UserDetailComponent, doughnut_component_1.DoughnutComponent, barchart_component_1.BarChartComponent,
-                linechart_component_1.LineChartComponent, polarareachart_component_1.PolarAreaChartComponent, piechart_component_1.PieChartComponent, radarchart_component_1.RadarChartComponent, select_1.SelectComponent, off_click_1.OffClickDirective, select_pipes_1.HighlightPipe,
+                linechart_component_1.LineChartComponent, polarareachart_component_1.PolarAreaChartComponent, piechart_component_1.PieChartComponent, radarchart_component_1.RadarChartComponent,
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [userservice_1.UserService]
+            providers: [userservice_1.UserService, storeservice_1.StoreService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

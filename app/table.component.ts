@@ -102,9 +102,9 @@ export class TableComponent {
     }
 
     onRowSelect(event) {
-        console.log("Row selected!", this.progressBarvalue);
+        // console.log("Row selected!", this.progressBarvalue);
         this.progressBarvalue = 1;
-        this.interval = setInterval(()=>{
+        /*this.interval = setInterval(()=>{
           if(this.progressBarvalue !== 0){
               if(this.progressBarvalue < 90){
                 //this.progressBarvalue = this.progressBarvalue + Math.floor(Math.random() * 20) + 1;
@@ -120,7 +120,8 @@ export class TableComponent {
                 clearInterval(this.interval);
               }
         }
-        },500);
+        },500);*/
+        this.progressBarvalue = 100;
     }
 
     onRowUnselect(event) {

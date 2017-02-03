@@ -9,8 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var storeservice_1 = require('../../app/storeservice');
 var BarChartComponent = (function () {
-    function BarChartComponent() {
+    function BarChartComponent(route) {
+        this.route = route;
+        console.log(storeservice_1.StoreService.prototype.barChartData);
+        var storeData = storeservice_1.StoreService.prototype.barChartData;
         this.barChartData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
@@ -18,18 +23,14 @@ var BarChartComponent = (function () {
                     label: 'My First dataset',
                     backgroundColor: '#42A5F5',
                     borderColor: '#1E88E5',
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: storeData
                 },
-                {
-                    label: 'My Second dataset',
-                    backgroundColor: '#9CCC65',
-                    borderColor: '#7CB342',
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
             ]
         };
     }
     BarChartComponent.prototype.ngOnInit = function () {
+    };
+    BarChartComponent.prototype.ngOnDestroy = function () {
     };
     BarChartComponent = __decorate([
         core_1.Component({
@@ -38,7 +39,7 @@ var BarChartComponent = (function () {
             providers: [],
             styleUrls: ['app/resources/css/site.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], BarChartComponent);
     return BarChartComponent;
 }());

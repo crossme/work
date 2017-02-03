@@ -18,6 +18,13 @@ var DashboardComponent = (function () {
         this.router = router;
         this.location = location;
         this.userService = userService;
+        this.myList = [
+            { groupfield: 'Group 2', whatever: 'abc' },
+            { groupfield: 'Group 1', whatever: 'def' },
+            { groupfield: 'Group 2', whatever: 'ghi' },
+            { groupfield: 'Group 2', whatever: 'jkl' },
+            { groupfield: 'Group 2', whatever: 'mno' }
+        ];
         this.myInterval = 5000;
         this.noWrapSlides = false;
         this.slides = [];
@@ -46,6 +53,7 @@ var DashboardComponent = (function () {
             setInterval(function () { ticker(); }, 5000);
         }, 4000);
     }
+    ;
     DashboardComponent.prototype.observableFun = function () {
         var obs = Observable_1.Observable.from(['1', 2, '3']);
         console.log('obsss', obs);
@@ -133,6 +141,41 @@ var DashboardComponent = (function () {
             .map(function (item) {
             return item.text;
         }).join(',');
+    };
+    DashboardComponent.prototype.getGroupBy = function (list, group_by) {
+        var filtered = [];
+        var prev_item = null;
+        var group_changed = false;
+        // this is a new field which is added to each item where we append "_CHANGED"
+        // to indicate a field change in the list
+        var new_field = group_by + '_CHANGED';
+        // loop through each item in the list
+        for (var i = list.length - 1; i >= 0; i--) {
+            group_changed = false;
+            // if not the first item
+            if (prev_item !== null) {
+                // check if the group by field changed
+                if (prev_item[group_by] !== list[i][group_by]) {
+                    group_changed = true;
+                }
+            }
+            else {
+                group_changed = true;
+            }
+            // if the group changed, then add a new field to the item
+            // to indicate this
+            if (group_changed) {
+                list[i][new_field] = true;
+            }
+            else {
+                list[i][new_field] = false;
+            }
+            filtered.push(list[i]);
+            prev_item = list[i];
+        }
+        ;
+        console.log(filtered);
+        return filtered;
     };
     DashboardComponent = __decorate([
         core_1.Component({

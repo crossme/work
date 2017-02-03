@@ -16,11 +16,19 @@ declare var $:any;
 export class DashboardComponent implements OnInit{
 
   images: any[];
-
+  public myList: Array<Object> = [
+        {groupfield: 'Group 2', whatever: 'abc'},
+        {groupfield: 'Group 1', whatever: 'def'},
+        {groupfield: 'Group 2', whatever: 'ghi'},
+        {groupfield: 'Group 2', whatever: 'jkl'},
+        {groupfield: 'Group 2', whatever: 'mno'}
+      ];;
   public myInterval:number = 5000;
   public noWrapSlides:boolean = false;
   public slides:Array<any> = [];
   myItems : any;
+
+
 
   observableFun(){
     const obs = Observable.from(['1',2,'3']);
@@ -155,5 +163,56 @@ GetUSERSSS(){
       }).join(',');
   }
 
+
+
+public getGroupBy(list: Array<any>, group_by: string): Array<any> {
+var filtered = [];
+    var prev_item = null;
+    var group_changed = false;
+    // this is a new field which is added to each item where we append "_CHANGED"
+    // to indicate a field change in the list
+
+
+    var new_field = group_by + '_CHANGED';
+
+    // loop through each item in the list
+
+
+    for (var i = list.length - 1; i >= 0; i--) {
+
+
+      group_changed = false;
+
+      // if not the first item
+      if (prev_item !== null) {
+
+        // check if the group by field changed
+        if (prev_item[group_by] !== list[i][group_by]) {
+          group_changed = true;
+        }
+
+        // otherwise we have the first item in the list which is new
+      } else {
+        group_changed = true;
+      }
+
+      // if the group changed, then add a new field to the item
+      // to indicate this
+      if (group_changed) {
+        list[i][new_field] = true;
+      } else {
+        list[i][new_field] = false;
+      }
+
+      filtered.push(list[i]);
+      prev_item = list[i];
+
+    };
+
+console.log(filtered);
+    return filtered;
+
+
+}
 
 }

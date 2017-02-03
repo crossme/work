@@ -1,6 +1,6 @@
 ===DETAILS COMPONENT===
 <div *ngIf='user'>
-  <h4>Work-allocated to him.</h4>
+  <h4>Work-allocated to {{user.name}}.</h4>
   <div style="float: right;padding-top: 8px; margin-right: 10px;">
           <span style="float: left; margin-top: 6px; margin-right: 7px;">
             Edit Row:
@@ -12,46 +12,49 @@
       <input #gb type="text" pInputText size="50" style="float:left" placeholder="Global Row Filter"
       pTooltip="Filter Rows" tooltipPosition="bottom" tooltipEvent="focus">
   </div>
-    
+
     <p-dataTable [value]="weeks" reorderableColumns="true" resizableColumns="true" [editable]="isRowEditable"
      [paginator]="true" [rows]="10" [responsive]="true" [globalFilter]="gb">
          <header>{{user.name}} details here!</header>
-
-        <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [editable]="isRowEditable" [sortable]="true"
-          [filter]="true">
-
+         <!-- ID AND CONTENT start -->
+        <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"
+              [editable]="isRowEditable" [sortable]="true"  [filter]="true">
+                col={{col}}
         </p-column>
+        <!-- ID AND CONTENT ends-->
 
-
-        <p-column field="color" header="Colorrrr"  [sortable]="true"
-          [filter]="true">
+        <!-- COLORING STARTS -->
+        <p-column field="color" header="Coloring"  [sortable]="true" [filter]="true">
 
             <template let-col let-user="rowData" pTemplate type="body">
-              <span *ngIf="user[col.field]=='Red'"  class="colorcell-green">Red</span>
-              <span *ngIf="user[col.field]=='Blue'" class="colorcell-blue">Blue</span>
+
+              <span [style.color]="user['color']"> {{user[col.field]}}</span>
 
             </template>
 
         </p-column>
-
+        <!-- COLORING -->
 
         <footer>
 
         </footer>
     </p-dataTable>
+
+
     <!-- Button for Display overLay -->
-    <p-splitButton iconPos="right" label="Enhanced View" icon="fa-check" (onClick)="saveSplitButton()" [model]="splitButtonitems"></p-splitButton>
+    <p-splitButton iconPos="right" label="Enhanced View"  (onClick)="getBusyCounter();saveSplitButton()" [model]="splitButtonitems"></p-splitButton>
+
+    <!-- SLIDE MENU HERE -->
+    <!--
+      <p-slideMenu [model]="slideMenuitems" ></p-slideMenu> -->
+    <!-- SLIDE MENU HERE -->
 
 
-    <p-slideMenu [model]="slideMenuitems"></p-slideMenu>
-
-
-    
 
 
     <!-- dialog for Enhanced Views -->
     <!-- <p-dialog header="Enhanced View" [(visible)]="isdisplay" modal="true" closeOnEscape="true" responsive="true" minHeight="600" minWidth="600">
-    
+
        asdsadasd
 
     </p-dialog>

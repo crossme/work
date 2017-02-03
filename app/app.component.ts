@@ -23,12 +23,12 @@ export class AppComponent implements OnInit{
              {label: 'Dashboard', icon: 'fa-book', routerLink: ['/dashboard']},
              {label: 'Table', icon: 'fa-bar-chart', routerLink: ['/table']},
         ];
-         if(location.pathname=="/table"){
+         if(location.pathname === '/table'){
             this.activeItem = this.items[1];
-         } else if(location.pathname=="/dashboard"){
+         } else if(location.pathname === '/dashboard'){
             this.activeItem = this.items[0];
-         } else {
-             this.activeItem = this.items[0];
+         } else if (location.pathname === '/') {
+             this.activeItem = this.items[1];
          }
         
 
