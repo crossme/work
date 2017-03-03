@@ -9,10 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var storeservice_1 = require('../../app/storeservice');
 var RadarChartComponent = (function () {
     function RadarChartComponent() {
-        this.data = {
-            labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+        var storeData = storeservice_1.StoreService.prototype.pieChartData;
+        var labelsAr = [];
+        var valueAr = [];
+        var colorAr = [];
+        storeData.forEach(function (e) {
+            labelsAr.push(e.content);
+            valueAr.push(e.BusyCounter);
+            colorAr.push(e.color);
+        });
+        this.radarChartData = {
+            labels: labelsAr,
             datasets: [
                 {
                     label: 'My First dataset',
@@ -22,18 +32,8 @@ var RadarChartComponent = (function () {
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgba(179,181,198,1)',
-                    data: [65, 59, 90, 81, 56, 55, 40]
+                    data: valueAr
                 },
-                {
-                    label: 'My Second dataset',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    pointBackgroundColor: 'rgba(255,99,132,1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(255,99,132,1)',
-                    data: [28, 48, 40, 19, 96, 27, 100]
-                }
             ]
         };
     }

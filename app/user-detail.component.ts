@@ -25,10 +25,9 @@ export class UserDetailComponent implements OnInit{
 
   private getBusyCounter() : Array<number> {
     let ar : Array<number> = [];
-    for (var i = this.weeks.length - 1; i >= 0; i--) {
+    for (var i = 0; i < this.weeks.length; i++) {
       ar.push(this.weeks[i]['BusyCounter']);
     }
-    console.log("BUSy arr",ar);
     return ar;
   }
   ngOnInit(){
@@ -50,8 +49,12 @@ export class UserDetailComponent implements OnInit{
                 {field: 'content', header: 'CONTENT'},
 
     ];
-    // this.storeService.barChartData = this.getBusyCounter();
-    StoreService.prototype.barChartData = this.getBusyCounter();
+
+    StoreService.prototype.barChartData = this.weeks;
+    StoreService.prototype.doughnutData = this.weeks;
+    StoreService.prototype.linechartData = this.weeks;
+    StoreService.prototype.pieChartData = this.weeks;
+    StoreService.prototype.polarAreaChartData = this.weeks;
 
 
     this.splitButtonitems = [

@@ -9,23 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var storeservice_1 = require('../../app/storeservice');
+var _ = require('underscore');
 var PieChartComponent = (function () {
     function PieChartComponent() {
-        this.data = {
-            labels: ['A', 'B', 'C'],
+        var storeData = storeservice_1.StoreService.prototype.pieChartData;
+        var labelsAr = [];
+        var valueAr = [];
+        var colorAr = [];
+        var shuffleColorAr = [];
+        storeData.forEach(function (e) {
+            labelsAr.push(e.content);
+            valueAr.push(e.BusyCounter);
+            colorAr.push(e.color);
+        });
+        shuffleColorAr = _.shuffle(colorAr);
+        for (var i = shuffleColorAr.length - 1; i >= 0; i--) {
+            var hex = storeservice_1.StoreService.prototype.colourNameToHex(shuffleColorAr[i]);
+            shuffleColorAr[i] = hex ? hex : '#000000';
+        }
+        this.pieChartData = {
+            labels: labelsAr,
             datasets: [
                 {
-                    data: [300, 50, 100],
-                    backgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                    ],
-                    hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                    ]
+                    data: valueAr,
+                    backgroundColor: colorAr,
+                    hoverBackgroundColor: shuffleColorAr
                 }]
         };
     }

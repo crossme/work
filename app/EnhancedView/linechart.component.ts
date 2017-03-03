@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
-
+import {StoreService} from '../../app/storeservice';
 
 @Component({
   selector: '<linechart>',
@@ -13,27 +13,37 @@ import {Location} from '@angular/common';
 export class LineChartComponent implements OnInit{
 
 	linechartData : any;
-	
+
 	 data: any;
-    
+
     msgs: any;
 
     constructor() {
+     let storeData = StoreService.prototype.linechartData;
+
+     let labelsAr : Array<String> = [];
+     let valueAr : Array<Number> = [];
+
+     storeData.forEach((e) => {
+        labelsAr.push(e.content);
+        valueAr.push(e.BusyCounter);
+     });
         this.linechartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: labelsAr,
             datasets: [
                 {
                     label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    data: valueAr,
                     fill: false,
                     borderColor: '#4bc0c0'
                 },
+                /*
                 {
                     label: 'Second Dataset',
                     data: [28, 48, 40, 19, 86, 27, 90],
                     fill: false,
                     borderColor: '#565656'
-                }
+                }*/
             ]
         }
     }

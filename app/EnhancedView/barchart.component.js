@@ -14,16 +14,21 @@ var storeservice_1 = require('../../app/storeservice');
 var BarChartComponent = (function () {
     function BarChartComponent(route) {
         this.route = route;
-        console.log(storeservice_1.StoreService.prototype.barChartData);
         var storeData = storeservice_1.StoreService.prototype.barChartData;
+        var labelsAr = [];
+        var valueAr = [];
+        storeData.forEach(function (e) {
+            labelsAr.push(e.content);
+            valueAr.push(e.BusyCounter);
+        });
         this.barChartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: labelsAr,
             datasets: [
                 {
                     label: 'My First dataset',
                     backgroundColor: '#42A5F5',
                     borderColor: '#1E88E5',
-                    data: storeData
+                    data: valueAr
                 },
             ]
         };

@@ -10,10 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var ng2_cache_1 = require('ng2-cache/ng2-cache');
 var AppComponent = (function () {
-    function AppComponent(location) {
+    function AppComponent(location, _cacheService) {
         this.location = location;
+        this._cacheService = _cacheService;
     }
+    AppComponent.prototype.func = function () {
+        //set global prefix as build version
+        this._cacheService.setGlobalPrefix('1');
+        //put some data to cache "forever"
+        //returns true is data was cached successfully, otherwise - false
+        var result = this._cacheService.set('key', ['some data']);
+        console.log(result);
+        var data;
+        data = this._cacheService.get('key');
+        console.log(data);
+    };
     AppComponent.prototype.ngOnInit = function () {
         this.items = [
             { label: 'Dashboard', icon: 'fa-book', routerLink: ['/dashboard'] },
@@ -28,13 +41,15 @@ var AppComponent = (function () {
         else if (location.pathname === '/') {
             this.activeItem = this.items[1];
         }
+        this.func();
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <p-tabMenu [model]=\"items\" [activeItem]=\"activeItem\"></p-tabMenu>\n  <router-outlet></router-outlet>\n  ",
+            template: "==\n\n==\n  <p-tabMenu [model]=\"items\" [activeItem]=\"activeItem\"></p-tabMenu>\n  <router-outlet></router-outlet>\n  ",
+            providers: [ng2_cache_1.CacheService]
         }), 
-        __metadata('design:paramtypes', [common_1.Location])
+        __metadata('design:paramtypes', [common_1.Location, ng2_cache_1.CacheService])
     ], AppComponent);
     return AppComponent;
 }());

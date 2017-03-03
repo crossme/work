@@ -11,7 +11,9 @@
     'rxjs':                       'node_modules/rxjs',
     moment: 			  'node_modules/moment/moment.js',
     'ng2-bootstrap':              'node_modules/ng2-bootstrap',
-    'primeng':                    'node_modules/primeng'
+    'primeng':                    'node_modules/primeng',
+    'ng2-cache':                  'node_modules/ng2-cache',
+    'underscore':                 'node_modules/underscore/'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -19,7 +21,11 @@
     'ng2-bootstrap': 	  	  {defaultExtension: 'js'                   },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
-    'primeng':                    { defaultExtension: 'js' }
+    'primeng':                    { defaultExtension: 'js' },
+    'ng2-cache':  { defaultExtension: 'js' },
+    'underscore':                 { main: 'underscore.js', format: 'cjs' }
+
+
   };
   var ngPackageNames = [
     'common',

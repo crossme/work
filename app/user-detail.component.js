@@ -20,10 +20,9 @@ var UserDetailComponent = (function () {
     }
     UserDetailComponent.prototype.getBusyCounter = function () {
         var ar = [];
-        for (var i = this.weeks.length - 1; i >= 0; i--) {
+        for (var i = 0; i < this.weeks.length; i++) {
             ar.push(this.weeks[i]['BusyCounter']);
         }
-        console.log("BUSy arr", ar);
         return ar;
     };
     UserDetailComponent.prototype.ngOnInit = function () {
@@ -41,8 +40,11 @@ var UserDetailComponent = (function () {
             { field: 'id', header: 'ID' },
             { field: 'content', header: 'CONTENT' },
         ];
-        // this.storeService.barChartData = this.getBusyCounter();
-        storeservice_1.StoreService.prototype.barChartData = this.getBusyCounter();
+        storeservice_1.StoreService.prototype.barChartData = this.weeks;
+        storeservice_1.StoreService.prototype.doughnutData = this.weeks;
+        storeservice_1.StoreService.prototype.linechartData = this.weeks;
+        storeservice_1.StoreService.prototype.pieChartData = this.weeks;
+        storeservice_1.StoreService.prototype.polarAreaChartData = this.weeks;
         this.splitButtonitems = [
             { label: 'Update', icon: 'fa-refresh', command: function () {
                     //this.update();

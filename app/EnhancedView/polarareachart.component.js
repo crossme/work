@@ -9,33 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var storeservice_1 = require('../../app/storeservice');
 var PolarAreaChartComponent = (function () {
     function PolarAreaChartComponent() {
+        var storeData = storeservice_1.StoreService.prototype.barChartData;
+        var labelsAr = [];
+        var valueAr = [];
+        var colorAr = [];
+        storeData.forEach(function (e) {
+            labelsAr.push(e.content);
+            valueAr.push(e.BusyCounter);
+        });
         this.polarAreaChartData = {
             datasets: [{
-                    data: [
-                        11,
-                        16,
-                        7,
-                        3,
-                        14
-                    ],
-                    backgroundColor: [
-                        "#FF6384",
-                        "#4BC0C0",
-                        "#FFCE56",
-                        "#E7E9ED",
-                        "#36A2EB"
-                    ],
+                    data: valueAr,
+                    backgroundColor: colorAr,
                     label: 'My dataset'
                 }],
-            labels: [
-                "Red",
-                "Green",
-                "Yellow",
-                "Grey",
-                "Blue"
-            ]
+            labels: labelsAr
         };
     }
     PolarAreaChartComponent.prototype.ngOnInit = function () {

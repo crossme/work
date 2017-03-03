@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
-
+import {StoreService} from '../../app/storeservice';
 
 @Component({
   selector: '<radarchart>',
@@ -12,11 +12,25 @@ import {Location} from '@angular/common';
 
 export class RadarChartComponent implements OnInit{
 
-	data: any;
+	radarChartData: any;
 
     constructor() {
-        this.data = {
-            labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+
+   let storeData = StoreService.prototype.pieChartData;
+
+     let labelsAr : Array<String> = [];
+     let valueAr : Array<Number> = [];
+     let colorAr : Array<String> = [];
+
+
+     storeData.forEach((e) => {
+        labelsAr.push(e.content);
+        valueAr.push(e.BusyCounter);
+        colorAr.push(e.color);
+     });
+
+        this.radarChartData = {
+            labels: labelsAr,
             datasets: [
                 {
                     label: 'My First dataset',
@@ -26,9 +40,9 @@ export class RadarChartComponent implements OnInit{
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgba(179,181,198,1)',
-                    data: [65, 59, 90, 81, 56, 55, 40]
+                    data: valueAr
                 },
-                {
+                /*{
                     label: 'My Second dataset',
                     backgroundColor: 'rgba(255,99,132,0.2)',
                     borderColor: 'rgba(255,99,132,1)',
@@ -37,11 +51,11 @@ export class RadarChartComponent implements OnInit{
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgba(255,99,132,1)',
                     data: [28, 48, 40, 19, 96, 27, 100]
-                }
+                }*/
             ]
         };
     }
-    
+
 	ngOnInit(){
 
 	}

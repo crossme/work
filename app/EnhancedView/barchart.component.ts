@@ -17,16 +17,25 @@ export class BarChartComponent implements OnInit{
 
 
 	constructor(private route : ActivatedRoute) {
-        console.log( StoreService.prototype.barChartData);
-       let storeData = StoreService.prototype.barChartData;
-		 this.barChartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+     let storeData = StoreService.prototype.barChartData;
+
+     let labelsAr : Array<String> = [];
+     let valueAr : Array<Number> = [];
+
+
+     storeData.forEach((e) => {
+        labelsAr.push(e.content);
+        valueAr.push(e.BusyCounter);
+     });
+
+     this.barChartData = {
+            labels: labelsAr,
             datasets: [
                 {
                     label: 'My First dataset',
                     backgroundColor: '#42A5F5',
                     borderColor: '#1E88E5',
-                    data: storeData
+                    data: valueAr
                 },
                 /*{
                     label: 'My Second dataset',
@@ -38,13 +47,14 @@ export class BarChartComponent implements OnInit{
             ]
         };
 	}
+
 	ngOnInit(){
 
-
 	}
-    ngOnDestroy() {
 
-    }
+  ngOnDestroy() {
+
+  }
 
 
 
