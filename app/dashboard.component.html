@@ -67,3 +67,21 @@
       </div>
   </span>
 </div> -->
+
+
+<div class="pull-left">
+            <h3>
+              Sample cropper 2
+               <div class="file-upload">
+                  <span class="text">upload</span>
+                  <input id="custom-input" type="file" (change)="fileChangeListener($event)">
+              </div>
+            </h3>
+
+
+            <img-cropper #cropper [image]="data2" [settings]="cropperSettings2"></img-cropper>
+            <br>
+            <span class="result rounded" *ngIf="data2.image" >
+                <img [src]="data2.image" [width]="cropperSettings2.croppedWidth" [height]="cropperSettings2.croppedHeight">
+            </span>
+        </div>

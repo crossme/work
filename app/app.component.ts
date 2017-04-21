@@ -36,7 +36,7 @@ public func() {
          console.log(result);
          let data: any ;
          data = this._cacheService.get('key');
-         console.log(data);
+         // console.log(data);
          
 
     }

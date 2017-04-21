@@ -3,6 +3,7 @@
  * Adjust as necessary for your application needs.
  */
 (function(global) {
+  var cropperVer = '0.6.1';
   // map tells the System loader where to look for things
   var map = {
     'app':                        'app', // 'dist',
@@ -13,7 +14,8 @@
     'ng2-bootstrap':              'node_modules/ng2-bootstrap',
     'primeng':                    'node_modules/primeng',
     'ng2-cache':                  'node_modules/ng2-cache',
-    'underscore':                 'node_modules/underscore/'
+    'underscore':                 'node_modules/underscore/',
+    'ng2-img-cropper':            'https://npmcdn.com/ng2-img-cropper@'+cropperVer
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -23,7 +25,8 @@
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'primeng':                    { defaultExtension: 'js' },
     'ng2-cache':  { defaultExtension: 'js' },
-    'underscore':                 { main: 'underscore.js', format: 'cjs' }
+    'underscore':                 { main: 'underscore.js', format: 'cjs' },
+'ng2-img-cropper' :           { main: 'index.js', defaultExtension: 'js' }
 
 
   };

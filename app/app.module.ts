@@ -17,7 +17,7 @@ import { LineChartComponent } from '../app/EnhancedView/linechart.component';
 import { PolarAreaChartComponent } from '../app/EnhancedView/polarareachart.component';
 import { PieChartComponent } from '../app/EnhancedView/piechart.component';
 import { RadarChartComponent } from '../app/EnhancedView/radarchart.component';
-
+import {ImageCropperComponent} from 'ng2-img-cropper';
 
 import {InputTextModule,DataTableModule,ButtonModule,DialogModule,
   SplitButtonModule,TabMenuModule,MenuModule,MessagesModule,
@@ -67,7 +67,7 @@ import {InputTextModule,DataTableModule,ButtonModule,DialogModule,
                 ])
                 ],
   declarations: [AppComponent, DashboardComponent, TableComponent, UserDetailComponent, DoughnutComponent, BarChartComponent,
-                LineChartComponent,PolarAreaChartComponent,PieChartComponent,RadarChartComponent,
+                LineChartComponent,PolarAreaChartComponent,PieChartComponent,RadarChartComponent,ImageCropperComponent,
                  ],
   bootstrap:    [AppComponent],
   providers:    [ UserService, StoreService ]
